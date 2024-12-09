@@ -1,0 +1,46 @@
+{
+    "extraversion": {
+      "ICL": {
+        "v1": {
+            "classification_prompt": {
+                "system_prompt": "Act as psychologist who understand human behaviour.\nYou will be provided with essays or posts in social network or dialog messages. Classify the author of each essay or post in social network or dialog message into a personality traits CATEGORY. Explain your answer. Provide your output in json format with the keys: answer and explanation.\n\nCATEGORIES:\n- <|Extravert|>\n- <|Introvert|>\n- <|I don't know.|>\n\nINSTRUCTION:\nDO NOT consider the content of the TEXT. Pay attention only to the COMMUNICATIVE STYLE and the words and phrases used.\n- The author of the TEXT is Extravert, if the the author TEXT is characterized as highly sociable, outgoing, and energized by social interactions. They tend to seek out social experiences, enjoy being the center of attention, and often exhibit assertive and talkative behaviors in various social settings.\n- The author of the TEXT is Introvert, if the the author TEXT is typically described as introverted and reserved. They tend to be more comfortable with solitude or small, intimate gatherings, often preferring quieter and less stimulating social environments compared to those with extravert.",
+                "user_prompt": "{text}"
+            },
+            "output_format": "json",
+            "llm_processor_prompt": "Please extract 'answer' and 'explanation' from the JSON response and format them as:\nPERSONALITY DETERMINATION: [answer]\nEXPLANATION: [explanation]" 
+        }
+      },
+      "CARP": {
+        "v1": {
+            "classification_prompt": {
+                "system_prompt": "This is a classifier that determines the user's personality (Extravert or Introvert), based on the text written by this user.\n\n- The author of the INPUT is Extravert, if the author of the INPUT is characterized as highly sociable, outgoing, and energized by social interactions. They tend to seek out social experiences, enjoy being the center of attention, and often exhibit assertive and talkative behaviors in various social settings. The author of the INPUT appears to be outgoing, sociable, energetic, talkative, assertive, friendly, gregarious, enthusiastic, extroverted, bold, expressive, adventurous, charismatic, active, optimistic.\n- The author of the INPUT is Introvert, if the author of the INPUT is typically described as introverted and reserved. They tend to be more comfortable with solitude or small, intimate gatherings, often preferring quieter and less stimulating social environments compared to those with extravert. The author of the INPUT appears to be introverted, reserved, quiet, reflective, shy, solitary, thoughtful, retiring, observant, contemplative, cautious, deliberate, timid, independent, introspective.\n\nFirst, list CLUES (i.e., keywords, phrases, contextual information, semantic relations, semantic meaning, tones, references) that support the personality determination of input.\nSecond, deduce the diagnostic REASONING process from premises (i.e., clues, input) that supports the INPUT personality determination (Limit the number of words to 130).\nThird, based on clues, reasoning and input, determine if the author of the INPUT is an Extravert or an Introvert.",
+                "user_prompt": "INPUT: {text}\nCLUES:"
+            },
+            "output_format": "text",
+            "llm_processor_prompt": "Please reformat the response to include:\n- QUOTES: Extracted quotes with comments.\n- CLUES: Extracted clues.\n- REASONING: The reasoning process.\n- PERSONALITY DETERMINATION: The final conclusion as 'Extravert' or 'Introvert'.\nEnsure each section is clearly labeled and formatted."
+        }
+      },
+      "LOP": {
+        "v1": {
+            "classification_prompt": {
+                "system_prompt": "Analyze the person-generated text from sentence level, determine the person’s level of Extraversion. Only return Introvert or Extravert. Explain your answer. Provide your output in json format with the keys: answer and explanation.",
+                "user_prompt": "{text}"
+            },
+            "output_format": "json",
+            "llm_processor_prompt": "Please extract 'answer' and 'explanation' from the JSON response and format them as:\nPERSONALITY DETERMINATION: [answer]\nEXPLANATION: [explanation]"
+        }
+      },
+      "LOP_COT": {
+        "v1": {
+            "classification_prompt": {
+                "system_prompt": "Analyze the person-generated text from sentence level, determine the person’s level of Extraversion. Only return Introvert or Extravert. Explain your answer. Provide your output in json format with the keys: answer and explanation.",
+                "user_prompt": "Text: {text}\nLevel: Let’s think step by step:"
+            },
+            "output_format": "text",
+            "llm_processor_prompt": "Please analyze the reasoning and explanation in the response, and format the text as:\n[If reasoning is present, include it as 'REASONING:']\nPERSONALITY DETERMINATION: [answer]\nEXPLANATION: [explanation]\nEnsure each section is clearly labeled."
+        }
+      }
+    }
+  }
+  
+  
