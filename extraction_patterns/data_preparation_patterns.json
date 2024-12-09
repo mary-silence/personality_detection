@@ -1,0 +1,18 @@
+{
+    "ICL": {
+      "json_keys": ["answer", "explanation"]
+    },
+    "CARP": {
+      "reasoning_pattern": "(?i).*reasoning:\\s{0,}|reasoning\\sprocess:\\s{0,}",
+      "conclusion_pattern": "(?i)personality.*:\\s{0,}|conclusion:\\s{0,}|result:\\s{0,}",
+      "clues_pattern": "(?i)clues:\\s{0,}",
+      "quotes_pattern": "(?i)quotes:\\s{0,}"
+    },
+    "LOP": {
+      "json_keys": ["answer", "explanation"]
+    },
+    "LOP_COT": {
+      "reasoning_start": "Let’s think step by step:",
+      "explanation_key": "explanation"
+    }
+}
